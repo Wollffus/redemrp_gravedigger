@@ -9,7 +9,17 @@ end)
 RegisterServerEvent("RegisterUsableItem:shovel")
 AddEventHandler("RegisterUsableItem:shovel", function(source)
     TriggerClientEvent('grave:TriggerRobbery', source)
---    print(source, "You dirty criminal you")
+end)
+
+
+Citizen.CreateThread(function()
+	if GetCurrentResourceName() ~= "WH_Redemrp_Graverobbing" then -- There will be problems with the script if the name is changed...
+		print("^1=====================================")
+		print("^1SCRIPT NAME OTHER THAN ORIGINAL")
+		print("^1THERE WILL/MAY BE PROBLEMS WITH THE SCRIPT IF THE NAME IS CHANGED")
+		print("^1CHANGE NAME TO: ^2WH_Redemrp_Graverobbing^1")
+		print("^1=====================================^0")
+	end
 end)
 
 RegisterNetEvent("grave:Complete")
@@ -89,53 +99,3 @@ AddEventHandler("grave:Complete", function()
         TriggerClientEvent("redemrp_notification:start", _source, "Nothing is here", 2)
     end
 end)
-
------------------------------------------------------------------------------VERSION CHECK--------------------------------------------------------------------------------------
-Citizen.CreateThread(function()
-    versionchecker()
-end)
-
-function versionchecker()
-    local data = getdatafromapi("https://raw.githubusercontent.com/Wollffus/filevalidation/main/WH_Redemrp_Graverobbing.json", function(data)
-        if data then
-            local dataversion = data.version
-            local change = data.changelog
-            if version < dataversion then
-                print("A new update is available!","\nYour version : " ..version,"\nNew version :  "..dataversion ,"\nChange log : \n".. change)
-            end
-        end
-    end)
-end
-
-function getdatafromapi(url,cb)
-    local data = nil
-    PerformHttpRequest(url, function(code, result, headers)
-        if result and #result then
-            data = json.decode(result)
-            cb(data)
-        end
-    end, "GET")
-end
------------------------------------------------------------------------------VERSION CHECK--------------------------------------------------------------------------------------
-
-Citizen.CreateThread(function()
-	if GetCurrentResourceName() ~= "WH_Redemrp_Graverobbing" then -- There will be problems with the script if the name is changed...
-		print("^1=====================================")
-		print("^1SCRIPT NAME OTHER THAN ORIGINAL")
-		print("^1THERE WILL/MAY BE PROBLEMS WITH THE SCRIPT IF THE NAME IS CHANGED")
-		print("^1CHANGE NAME TO: ^2WH_Redemrp_Graverobbing^1")
-		print("^1=====================================^0")
-	end
-end)
------------------------------------------------------------------------------CREDITS--------------------------------------------------------------------------------------
-AddEventHandler('onResourceStart', function(resourceName)
-	if (GetCurrentResourceName() ~= resourceName) then
-		return
-	end
-	print('^5 '..resourceName..'^2 Successfully Loaded ^7')
-    print(version )
-	print('^3 Maintained by WolfHouse Studios Dev Team ^7')
-	print('^1 If you require support join:^5 https://discord.gg/zGVDppYxfk ^7')
-    print('^3 https://digitalresources.tebex.io ^7')
-end)
---
