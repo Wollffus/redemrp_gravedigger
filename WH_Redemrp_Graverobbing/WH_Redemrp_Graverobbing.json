@@ -1,0 +1,26 @@
+{
+    "version":1.6,
+    "changelog" : "2023 RedEM Framework Update, more config options!!",
+    "old":[
+        {
+            "version":1.5,
+            "changelog" : "QOL fixes, name adjustments"
+        },
+        {
+            "version":1.4,
+            "changelog" : "Calls Cops (RedEM), Config option for cop message, Config option for time to dig"
+        },
+        {
+            "version":1.3,
+            "changelog" : "Fixed animation"
+        },
+        {
+            "version":1.2,
+            "changelog" : "Version check"
+        },
+        {
+            "version":1.0,
+            "changelog" : "First Release"
+        }
+    ]
+}
